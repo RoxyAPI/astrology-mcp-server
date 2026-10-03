@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bunx biome ci .
+
+      - name: Typecheck
+        run: bun typecheck
+
+      - name: Build and test
+        run: bun run test
+
+      - name: Docker image answers tools/list
+        run: |
+          docker build -t astrology-mcp-server .
+          { printf '%s\n' \
+              '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
+              '{"jsonrpc":"2.0","method":"notifications/initialized"}' \
+              '{"jsonrpc":"2.0","id":2,"method":"tools/list"}'; sleep 10; } \
+            | docker run -i --rm astrology-mcp-server \
+            | jq -e 'select(.id == 2) | .result.tools | length > 0'

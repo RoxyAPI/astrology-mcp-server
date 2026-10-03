@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Astrology MCP Server"
+abstract: "Astrology MCP server by RoxyAPI. Hosted Remote MCP for natal charts, horoscopes, synastry, Vedic kundli, panchang, tarot, numerology and 18+ insight domains on one key, plus a local stdio server for clients that need one."
+authors:
+  - name: "RoxyAPI"
+url: "https://roxyapi.com/docs/mcp"
+repository-code: "https://github.com/RoxyAPI/astrology-mcp-server"
+license: MIT
+type: software
+keywords:
+  - astrology
+  - mcp
+  - mcp-server
+  - model-context-protocol
+  - remote-mcp
+  - astrology-api
+  - vedic-astrology
+  - horoscope

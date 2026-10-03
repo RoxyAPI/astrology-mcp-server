@@ -1,0 +1,64 @@
+{
+	"name": "@roxyapi/astrology-mcp-server",
+	"version": "0.1.0",
+	"description": "Astrology MCP server by RoxyAPI: natal charts, horoscopes, synastry, Vedic kundli, panchang, tarot, numerology and 18+ insight domains on one key, verified against NASA JPL Horizons",
+	"type": "module",
+	"bin": {
+		"astrology-mcp-server": "dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"node": ">=20"
+	},
+	"scripts": {
+		"build": "bun build src/index.ts --target node --outfile dist/index.js",
+		"typecheck": "tsc --noEmit",
+		"test": "bun run build && bun test",
+		"check": "biome check . --fix",
+		"pack:mcpb": "bun run build && bunx @anthropic-ai/mcpb@2 pack . astrology-mcp-server.mcpb"
+	},
+	"keywords": [
+		"astrology",
+		"mcp",
+		"mcp-server",
+		"model-context-protocol",
+		"astrology-api",
+		"horoscope",
+		"natal-chart",
+		"birth-chart",
+		"vedic-astrology",
+		"jyotish",
+		"kundli",
+		"panchang",
+		"ephemeris",
+		"tarot",
+		"numerology",
+		"human-design",
+		"remote-mcp",
+		"claude",
+		"ai-agent",
+		"roxyapi"
+	],
+	"license": "MIT",
+	"author": "RoxyAPI",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RoxyAPI/astrology-mcp-server.git"
+	},
+	"homepage": "https://roxyapi.com/docs/mcp",
+	"bugs": {
+		"url": "https://github.com/RoxyAPI/astrology-mcp-server/issues"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.5.15",
+		"@modelcontextprotocol/client": "^2.3.0",
+		"@modelcontextprotocol/server": "^2.3.0",
+		"@types/bun": "^1.4.2",
+		"@types/node": "^26.6.4",
+		"lefthook": "^2.1.16",
+		"typescript": "^6.0.3"
+	},
+	"mcpName": "com.roxyapi/astrology-mcp-server"
+}

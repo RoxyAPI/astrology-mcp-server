@@ -1,0 +1,57 @@
+{
+	"$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+	"name": "com.roxyapi/astrology-mcp-server",
+	"title": "Astrology MCP Server by RoxyAPI",
+	"description": "Natal charts, horoscopes, synastry, Vedic kundli and 18+ insight domains for AI agents.",
+	"version": "0.1.0",
+	"websiteUrl": "https://roxyapi.com/docs/mcp",
+	"repository": {
+		"url": "https://github.com/RoxyAPI/astrology-mcp-server",
+		"source": "github"
+	},
+	"icons": [
+		{
+			"src": "https://roxyapi.com/logo.png",
+			"mimeType": "image/png",
+			"sizes": ["512x512"]
+		}
+	],
+	"remotes": [
+		{
+			"type": "streamable-http",
+			"url": "https://roxyapi.com/mcp/astrology",
+			"headers": [
+				{
+					"name": "X-API-Key",
+					"description": "RoxyAPI key from roxyapi.com/account",
+					"isRequired": true,
+					"isSecret": true
+				}
+			]
+		}
+	],
+	"packages": [
+		{
+			"registryType": "npm",
+			"identifier": "@roxyapi/astrology-mcp-server",
+			"version": "0.1.0",
+			"transport": {
+				"type": "stdio"
+			},
+			"environmentVariables": [
+				{
+					"name": "ROXY_API_KEY",
+					"description": "RoxyAPI key from roxyapi.com/account",
+					"isRequired": true,
+					"isSecret": true
+				},
+				{
+					"name": "ROXY_MCP_DOMAINS",
+					"description": "Comma separated domains to load, for example astrology,vedic-astrology,tarot",
+					"isRequired": false,
+					"default": "astrology"
+				}
+			]
+		}
+	]
+}

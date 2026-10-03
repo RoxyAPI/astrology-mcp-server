@@ -1,0 +1,12 @@
+node_modules/
+*.log
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+
+# Internal maintainer notes. Not public.
+CLAUDE.md
+dist/
+*.mcpb

@@ -1,0 +1,58 @@
+{
+	"manifest_version": "0.3",
+	"name": "astrology-mcp-server",
+	"display_name": "RoxyAPI Astrology",
+	"version": "0.1.0",
+	"description": "Astrology MCP server: natal charts, horoscopes, synastry, Vedic kundli, tarot, numerology and 18+ insight domains on one key.",
+	"author": {
+		"name": "RoxyAPI",
+		"url": "https://roxyapi.com"
+	},
+	"homepage": "https://roxyapi.com/docs/mcp",
+	"documentation": "https://roxyapi.com/docs/mcp",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/RoxyAPI/astrology-mcp-server"
+	},
+	"license": "MIT",
+	"keywords": [
+		"astrology",
+		"horoscope",
+		"vedic-astrology",
+		"tarot",
+		"numerology"
+	],
+	"server": {
+		"type": "node",
+		"entry_point": "dist/index.js",
+		"mcp_config": {
+			"command": "node",
+			"args": ["${__dirname}/dist/index.js"],
+			"env": {
+				"ROXY_API_KEY": "${user_config.api_key}",
+				"ROXY_MCP_DOMAINS": "${user_config.domains}"
+			}
+		}
+	},
+	"user_config": {
+		"api_key": {
+			"type": "string",
+			"title": "RoxyAPI key",
+			"description": "Your RoxyAPI key from roxyapi.com/pricing",
+			"sensitive": true,
+			"required": true
+		},
+		"domains": {
+			"type": "string",
+			"title": "Domains",
+			"description": "Comma separated domains, for example astrology,vedic-astrology,tarot",
+			"default": "astrology",
+			"required": false
+		}
+	},
+	"compatibility": {
+		"runtimes": {
+			"node": ">=20"
+		}
+	}
+}
