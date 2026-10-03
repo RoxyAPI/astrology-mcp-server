@@ -10,7 +10,7 @@ https://roxyapi.com/mcp/astrology
 [![CI](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-Point an MCP client at that URL, send your key in the `X-API-Key` header, and the agent can call 258+ tools across every RoxyAPI domain. Calculations read the NASA JPL DE440 ephemeris directly and are verified against NASA JPL Horizons. Get a key at [roxyapi.com/pricing](https://roxyapi.com/pricing).
+Point an MCP client at that URL, send your key in the `X-API-Key` header, and the agent can call <!-- BEGIN:TOOLS -->258+<!-- END:TOOLS --> tools across every RoxyAPI domain. Calculations read the NASA JPL DE440 ephemeris directly and are verified against NASA JPL Horizons. Get a key at [roxyapi.com/pricing](https://roxyapi.com/pricing).
 
 ## How do I connect an AI agent to the astrology MCP server?
 
@@ -118,26 +118,28 @@ A container image builds from the `Dockerfile` in this repository: `docker build
 
 One key reaches every domain. Each slug is a Remote MCP server at `https://roxyapi.com/mcp/{slug}` and a valid `ROXY_MCP_DOMAINS` value.
 
-| Domain | Slug |
-|---|---|
-| Western astrology | `astrology` |
-| Vedic astrology | `vedic-astrology` |
-| Forecast | `forecast` |
-| Human design | `human-design` |
-| Chinese astrology | `chinese-astrology` |
-| Feng shui | `feng-shui` |
-| Mesoamerican astrology | `mesoamerican-astrology` |
-| Vastu | `vastu` |
-| Numerology | `numerology` |
-| Kabbalah | `kabbalah` |
-| Tarot | `tarot` |
-| Biorhythm | `biorhythm` |
-| Ayurveda | `ayurveda` |
-| I Ching | `iching` |
-| Crystals | `crystals` |
-| Dreams | `dreams` |
-| Angel numbers | `angel-numbers` |
-| Location and timezone | `location` |
+<!-- BEGIN:DOMAINS -->
+| Domain | Slug | Tools |
+|---|---|---|
+| Western Astrology | `astrology` | 39 |
+| Vedic Astrology | `vedic-astrology` | 58 |
+| Forecast | `forecast` | 5 |
+| Human Design | `human-design` | 12 |
+| Chinese Astrology | `chinese-astrology` | 16 |
+| Feng Shui | `feng-shui` | 11 |
+| Mesoamerican Astrology | `mesoamerican-astrology` | 18 |
+| Vastu | `vastu` | 10 |
+| Numerology | `numerology` | 20 |
+| Kabbalah | `kabbalah` | 12 |
+| Tarot | `tarot` | 10 |
+| Biorhythm | `biorhythm` | 6 |
+| Ayurveda | `ayurveda` | 8 |
+| I-Ching | `iching` | 9 |
+| Crystals and Healing Stones | `crystals` | 12 |
+| Dreams | `dreams` | 5 |
+| Angel Numbers | `angel-numbers` | 4 |
+| Location and Timezone | `location` | 3 |
+<!-- END:DOMAINS -->
 
 ## What can the astrology tools do?
 

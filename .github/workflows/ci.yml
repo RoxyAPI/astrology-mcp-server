@@ -4,6 +4,9 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Weekly, so the live listing test and the container probe run without a push.
+  schedule:
+    - cron: '0 7 * * 1'
 
 permissions:
   contents: read

@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  schedule:
+    - cron: '0 6 * * *'
   workflow_dispatch:
     inputs:
       version_bump:
@@ -16,6 +18,9 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Release tags are the ledger the gate reads; a shallow clone has none.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v6
         with:
@@ -26,11 +31,38 @@ jobs:
 
       - run: bun install --frozen-lockfile
 
+      - name: Sync README from the live spec and servers
+        run: bun run docs:sync
+
+      # Compare what ships against the last released tag, never against the working tree:
+      # a hand-committed sync would leave a clean tree and skip a release forever.
+      # Dispatch always releases. Nothing releases before the first version is on npm.
+      - name: Does anything that ships differ from the last release?
+        id: gate
+        env:
+          EVENT: ${{ github.event_name }}
+        run: |
+          if ! npm view @roxyapi/mcp version > /dev/null 2>&1; then
+            echo "::notice::@roxyapi/mcp is not on npm yet, skipping the release"
+            echo "release=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          LAST=$(git describe --tags --abbrev=0 --match 'v*' 2>/dev/null || true)
+          if [ "$EVENT" = "workflow_dispatch" ] || [ -z "$LAST" ] \
+            || ! git diff --quiet "$LAST" -- README.md package.json bun.lock src manifest.json; then
+            echo "release=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "release=false" >> "$GITHUB_OUTPUT"
+          fi
+
       # package.json, manifest.json and server.json carry one version.
       - name: Bump version
         id: bump
+        if: steps.gate.outputs.release == 'true'
+        env:
+          BUMP: ${{ github.event.inputs.version_bump || 'patch' }}
         run: |
-          npm version ${{ github.event.inputs.version_bump || 'patch' }} --no-git-tag-version
+          npm version "$BUMP" --no-git-tag-version
           VERSION=$(node -p "require('./package.json').version")
           jq --arg v "$VERSION" '.version = $v' manifest.json > manifest.tmp && mv manifest.tmp manifest.json
           jq --arg v "$VERSION" '.version = $v | .packages[0].version = $v' server.json > server.tmp && mv server.tmp server.json
@@ -38,26 +70,33 @@ jobs:
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Build and test
+        if: steps.gate.outputs.release == 'true'
         run: bun run test
 
       - name: Publish to npm
+        if: steps.gate.outputs.release == 'true'
         run: |
           npm install -g npm@latest
           npm publish --access public --provenance
 
       - name: Pack desktop extension
+        if: steps.gate.outputs.release == 'true'
         run: bun run pack:mcpb
 
       - name: Commit, tag, push
+        if: steps.gate.outputs.release == 'true'
+        env:
+          VERSION: ${{ steps.bump.outputs.version }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add package.json manifest.json server.json
-          git commit -m "release: v${{ steps.bump.outputs.version }}"
-          git tag "v${{ steps.bump.outputs.version }}"
+          git add README.md package.json manifest.json server.json
+          git commit -m "release: v$VERSION"
+          git tag "v$VERSION"
           git push --follow-tags
 
       - name: Create GitHub release
+        if: steps.gate.outputs.release == 'true'
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ steps.bump.outputs.version }}

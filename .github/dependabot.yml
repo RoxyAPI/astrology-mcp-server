@@ -1,10 +1,19 @@
 version: 2
 updates:
-  - package-ecosystem: "github-actions"
-    directory: "/"
+  # bun ecosystem, not npm: the lockfile is bun.lock and CI installs it frozen.
+  - package-ecosystem: bun
+    directory: /
     schedule:
-      interval: "weekly"
-  - package-ecosystem: "npm"
-    directory: "/"
+      interval: weekly
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 3
+    # Every dependency is a devDependency bundled into dist, so one catch-all group.
+    groups:
+      dev-dependencies:
+        patterns: ["*"]
+
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "weekly"
+      interval: weekly

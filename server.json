@@ -3,7 +3,7 @@
 	"name": "com.roxyapi/mcp",
 	"title": "Astrology MCP Server by RoxyAPI",
 	"description": "Natal charts, horoscopes, synastry, Vedic kundli and 18+ insight domains for AI agents.",
-	"version": "0.1.0",
+	"version": "1.1.1",
 	"websiteUrl": "https://roxyapi.com/docs/mcp",
 	"repository": {
 		"url": "https://github.com/RoxyAPI/astrology-mcp-server",
@@ -34,7 +34,7 @@
 		{
 			"registryType": "npm",
 			"identifier": "@roxyapi/mcp",
-			"version": "0.1.0",
+			"version": "1.1.1",
 			"transport": {
 				"type": "stdio"
 			},
