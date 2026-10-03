@@ -22,7 +22,7 @@ jobs:
           # Release tags are the ledger the gate reads; a shallow clone has none.
           fetch-depth: 0
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
