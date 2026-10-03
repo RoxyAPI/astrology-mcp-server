@@ -1,10 +1,10 @@
 {
-	"name": "@roxyapi/astrology-mcp-server",
+	"name": "@roxyapi/mcp",
 	"version": "0.1.0",
 	"description": "Astrology MCP server by RoxyAPI: natal charts, horoscopes, synastry, Vedic kundli, panchang, tarot, numerology and 18+ insight domains on one key, verified against NASA JPL Horizons",
 	"type": "module",
 	"bin": {
-		"astrology-mcp-server": "dist/index.js"
+		"roxyapi-mcp": "dist/index.js"
 	},
 	"files": [
 		"dist"
@@ -60,5 +60,5 @@
 		"lefthook": "^2.1.16",
 		"typescript": "^6.0.3"
 	},
-	"mcpName": "com.roxyapi/astrology-mcp-server"
+	"mcpName": "com.roxyapi/mcp"
 }

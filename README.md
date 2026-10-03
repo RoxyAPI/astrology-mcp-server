@@ -6,7 +6,7 @@ The RoxyAPI Astrology MCP server gives any AI agent natal charts, horoscopes, sy
 https://roxyapi.com/mcp/astrology
 ```
 
-[![npm](https://img.shields.io/npm/v/@roxyapi/astrology-mcp-server)](https://www.npmjs.com/package/@roxyapi/astrology-mcp-server)
+[![npm](https://img.shields.io/npm/v/@roxyapi/mcp)](https://www.npmjs.com/package/@roxyapi/mcp)
 [![CI](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
@@ -38,7 +38,7 @@ Claude Desktop starts local servers from `claude_desktop_config.json`, so use th
   "mcpServers": {
     "roxy-astrology": {
       "command": "npx",
-      "args": ["-y", "@roxyapi/astrology-mcp-server"],
+      "args": ["-y", "@roxyapi/mcp"],
       "env": { "ROXY_API_KEY": "your-key" }
     }
   }
@@ -104,7 +104,7 @@ Add one MCP Client Tool node per domain. Use a secret key: publishable `pk_` key
 For clients that only start local servers over stdio. The package relays to the same hosted servers, so the tools, the answers and the billing are identical to Remote MCP.
 
 ```bash
-ROXY_API_KEY=your-key npx -y @roxyapi/astrology-mcp-server
+ROXY_API_KEY=your-key npx -y @roxyapi/mcp
 ```
 
 | Variable | Default | Meaning |

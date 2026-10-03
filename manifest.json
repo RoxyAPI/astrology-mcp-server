@@ -1,6 +1,6 @@
 {
 	"manifest_version": "0.3",
-	"name": "astrology-mcp-server",
+	"name": "roxyapi-mcp",
 	"display_name": "RoxyAPI Astrology",
 	"version": "0.1.0",
 	"description": "Astrology MCP server: natal charts, horoscopes, synastry, Vedic kundli, tarot, numerology and 18+ insight domains on one key.",
