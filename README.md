@@ -31,7 +31,7 @@ Writing integration code rather than calling tools at run time? Point Claude Cod
 
 ### Claude Desktop
 
-Claude Desktop starts local servers from `claude_desktop_config.json`, so use the [stdio package](#local-stdio-server) below, or install the `.mcpb` file from the [latest release](https://github.com/RoxyAPI/astrology-mcp-server/releases/latest) in one click and paste your key when asked.
+Claude Desktop starts local servers from `claude_desktop_config.json`, so use the [stdio package](#local-stdio-server) below, or download [astrology-mcp-server.mcpb](https://github.com/RoxyAPI/astrology-mcp-server/releases/latest/download/astrology-mcp-server.mcpb), double-click it to install, and paste your key when asked.
 
 ```json
 {
