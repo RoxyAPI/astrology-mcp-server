@@ -165,7 +165,7 @@ Responses are available in 10+ languages, including English, Hindi, Spanish, Ger
 
 - [sdk-typescript](https://github.com/RoxyAPI/sdk-typescript), [sdk-python](https://github.com/RoxyAPI/sdk-python), [sdk-php](https://github.com/RoxyAPI/sdk-php), [sdk-go](https://github.com/RoxyAPI/sdk-go), [sdk-dotnet](https://github.com/RoxyAPI/sdk-dotnet): typed SDKs for the same API
 - [ui](https://github.com/RoxyAPI/ui): drop-in chart and reading components
-- [claude-plugin](https://github.com/RoxyAPI/claude-plugin): RoxyAPI skill and docs server for Claude Code
+- [agent-plugin](https://github.com/RoxyAPI/agent-plugin): RoxyAPI skill and docs server for Claude Code and Cursor
 - [astrology-ai-chatbot](https://github.com/RoxyAPI/astrology-ai-chatbot): an open source astrology chatbot built on these MCP servers
 - [astrology-api-openapi](https://github.com/RoxyAPI/astrology-api-openapi): the OpenAPI specification
 - [astrology-api-benchmark](https://github.com/RoxyAPI/astrology-api-benchmark): the published accuracy benchmark
