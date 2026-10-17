@@ -59,7 +59,7 @@
 		"@types/bun": "^1.4.2",
 		"@types/node": "^26.6.4",
 		"lefthook": "^2.1.16",
-		"typescript": "^6.0.3"
+		"typescript": "^7.0.2"
 	},
 	"mcpName": "com.roxyapi/mcp"
 }
