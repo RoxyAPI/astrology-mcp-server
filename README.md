@@ -9,6 +9,7 @@ https://roxyapi.com/mcp/astrology
 [![npm](https://img.shields.io/npm/v/@roxyapi/mcp)](https://www.npmjs.com/package/@roxyapi/mcp)
 [![CI](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml/badge.svg)](https://github.com/RoxyAPI/astrology-mcp-server/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+[![RoxyAPI/astrology-mcp-server MCP server](https://glama.ai/mcp/servers/RoxyAPI/astrology-mcp-server/badges/score.svg)](https://glama.ai/mcp/servers/RoxyAPI/astrology-mcp-server)
 
 Point an MCP client at that URL, send your key in the `X-API-Key` header, and the agent can call <!-- BEGIN:TOOLS -->258+<!-- END:TOOLS --> tools across every RoxyAPI domain. Calculations read the NASA JPL DE440 ephemeris directly and are verified against NASA JPL Horizons. Get a key at [roxyapi.com/pricing](https://roxyapi.com/pricing).
 
@@ -140,6 +141,8 @@ One key reaches every domain. Each slug is a Remote MCP server at `https://roxya
 | Angel Numbers | `angel-numbers` | 4 |
 | Location and Timezone | `location` | 3 |
 <!-- END:DOMAINS -->
+
+The hosted servers on Glama: [Western Astrology](https://glama.ai/mcp/connectors/com.roxyapi/astrology), [Vedic Astrology](https://glama.ai/mcp/connectors/com.roxyapi/vedic-astrology).
 
 ## What can the astrology tools do?
 
